@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Enter the value to check whether its palindrome or not</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+</body>
+<script>
+function palindrome(number){
+	
+	if(number>0){
+		var rev_num = 0;
+		while(number>0){
+			rev_num=(rev_num*10)+(number%10);
+			number=parseInt(number/10);
+		}
+		return(rev_num);
+	}
+	else{
+		return(0);
+	}	
+}
+function myFunction() {
+  var number = prompt("Please enter number");
+  var ans = palindrome(number);
+  if (number==ans && ans!=0) {
+    document.getElementById("demo").innerHTML =
+    "The "+number+" is a"+" palindrome";
+  }
+  else{
+  	document.getElementById("demo").innerHTML =
+    "The "+number+" is not a"+" palindrome";	
+  }
+}
+
+</script>
+</html>
