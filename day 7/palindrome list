@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<body>
+
+		<p>Enter the value to check whether its palindrome or not</p>
+
+		
+		
+		<button onclick="myFunction()">Try it</button>
+
+		<ul id="parent">
+			<li>
+				first item
+			</li>
+		</ul>
+
+
+	</body>
+	<script>
+		function palindrome(number){
+			
+			if(number>0){
+				var rev_num = 0;
+				while(number>0){
+					rev_num=(rev_num*10)+(number%10);
+					number=parseInt(number/10);
+				}
+				return(rev_num);
+			}
+			else{
+				return(0);
+			}	
+		}
+		function delete_row(){
+			var a = document.getElementById("parent");
+			a.removeChild(this);
+			
+		
+		
+		
+		}
+		function myFunction() {
+		  var number = prompt("Please enter number");
+		  var ans = palindrome(number);
+		  if (number==ans && ans!=0) {
+		  	var a = document.createElement("li");
+		  	var b = document.createElement("button");
+			b.innerText="delete"
+			var ab = document.getElementById("parent");
+		  	a.innerText = "The "+number+" is a"+" palindrome"; 
+		  	a.appendChild(b);
+			ab.appendChild(a);
+			b.addEventListener("click",delete_row);
+		  }
+		  else{
+		  	var a = document.createElement("li");
+			var b = document.createElement("button");
+			b.innerText="delete";
+		  	var ab = document.getElementById("parent");
+		  	a.innerText = "The "+number+" is not a"+" palindrome"; 
+		  	ab.appendChild(a);
+			a.appendChild(b);
+			b.addEventListener("click",delete_row);
+		  }
+		}
+	</script>
+</html>
