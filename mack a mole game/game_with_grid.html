@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> game </title>
+    <style>
+      .buttons{
+        margin-top: 20px;
+        text-align: center;
+      }
+      .timer{
+        text-align: center;
+        margin-top: 10px;
+        font-size: 25px;
+      }
+      button{
+        padding: 10px;
+        font-size: 20px;
+      }
+      h1{
+        text-align: center;
+        margin-top: 50px;
+      }
+      .grid-container{
+        display: grid;
+        text-align: center;
+        width: 500px;
+        margin: auto;
+        margin-top: 60px;
+        grid-template-columns: auto auto auto;
+        background-color: #2196F3;
+        padding: 10px;
+        border: 1px solid black;
+      }
+      .grid-item{
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>
+        Kill the Mole
+      </h1>
+    </div>
+    <div>
+      <div class="grid-container" id="container">
+        <div class="grid-item" id="item1" onclick="change_color(id)">1</div>
+        <div class="grid-item" id="item2" onclick="change_color(id)">2</div>
+        <div class="grid-item" id="item3" onclick="change_color(id)">3</div>
+        <div class="grid-item" id="item4" onclick="change_color(id)">4</div>
+        <div class="grid-item" id="item5" onclick="change_color(id)">5</div>
+        <div class="grid-item" id="item6" onclick="change_color(id)">6</div>
+        <div class="grid-item" id="item7" onclick="change_color(id)">7</div>
+        <div class="grid-item" id="item8" onclick="change_color(id)">8</div>
+        <div class="grid-item" id="item9" onclick="change_color(id)">9</div>
+      </div>
+    </div>
+    <div class="timer" id="timer">
+      Timer
+    </div>
+    <div class="buttons">
+      <button onclick="startTimer()">Start Timer</button>
+      <button onclick="startGame()">Start Chasing</button>
+      <button>Stop Chase</button>
+      <button onclick="stop_timer()">Stop Timer</button>
+      <button onclick="reset_counter()">Reset Timer</button>
+    </div>
+  </body>
+  <script>
+    let count = 0;
+    var pause;
+    function reset_counter() {
+      count=0;
+      pause=true;
+    }
+    function change_color(idd) {
+      var a = document.getElementById(idd);
+      a.innerText="red";
+      a.style.backgroundColor="red";
+    }
+    function startTimer(){
+      if(pause == undefined){
+      pause = setInterval(increment,1000);
+      }
+    }
+    function stop_timer() {
+      clearInterval(pause);
+      pause = undefined;
+    }
+    function pause_game() {
+    }
+    function increment() {
+      count=count+1;
+      var a = document.getElementById("timer");
+      a.innerText = count;
+    }
+    function startGame() {
+      var a = document.getElementById("timer");
+    }
+
+  </script>
+</html>
