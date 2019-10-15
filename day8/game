@@ -52,15 +52,15 @@
 	</div>
     <div>
       <div class="grid-container" id="container">
-        <div class="grid-item" id="1" onclick="clicked('1')">1</div>
-        <div class="grid-item" id="2" onclick="clicked('2')">2</div>
-        <div class="grid-item" id="3" onclick="clicked('3')">3</div>
-        <div class="grid-item" id="4" onclick="clicked('4')">4</div>
-        <div class="grid-item" id="5" onclick="clicked('5')">5</div>
-        <div class="grid-item" id="6" onclick="clicked('6')">6</div>
-        <div class="grid-item" id="7" onclick="clicked('7')">7</div>
-        <div class="grid-item" id="8" onclick="clicked('8')">8</div>
-        <div class="grid-item" id="9" onclick="clicked('9')">9</div>
+        <div class="grid-item" id="1" onclick="clicked(id)">1</div>
+        <div class="grid-item" id="2" onclick="clicked(id)">2</div>
+        <div class="grid-item" id="3" onclick="clicked(id)">3</div>
+        <div class="grid-item" id="4" onclick="clicked(id)">4</div>
+        <div class="grid-item" id="5" onclick="clicked(id)">5</div>
+        <div class="grid-item" id="6" onclick="clicked(id)">6</div>
+        <div class="grid-item" id="7" onclick="clicked(id)">7</div>
+        <div class="grid-item" id="8" onclick="clicked(id)">8</div>
+        <div class="grid-item" id="9" onclick="clicked(id)">9</div>
       </div>
     </div>
     <div class="timer" id="timer">
@@ -76,58 +76,58 @@
   </body>
   <script>
     let count = 0;
-let pause;
-let process;
-let previous;
-let id = 0
-function stop_chase(){
-    document.getElementById("start").disabled=false;
-    clearInterval(process);
-}
-function reset_counter() {
-  count=0;
-  pause=undefined;
-  var a = document.getElementById("timer");
-  a.innerText = 0;
-}
-function startTimer(){
-  if(pause == undefined){
-  pause = setInterval(increment,1000);
-  }
-}
-function stop_timer() {
-  clearInterval(pause);
-  document.getElementById(previous).style.backgroundColor = "rgba(255, 255, 255, 0.8)";
-  pause = undefined;
-}
+	let pause;
+	let process;
+	let previous;
+	let id = 0
+	function stop_chase(){
+		document.getElementById("start").disabled=false;
+		clearInterval(process);
+	}
+	function reset_counter() {
+	  count=0;
+	  pause=undefined;
+	  var a = document.getElementById("timer");
+	  a.innerText = 0;
+	}
+	function startTimer(){
+	  if(pause == undefined){
+	  pause = setInterval(increment,1000);
+	  }
+	}
+	function stop_timer() {
+	  clearInterval(pause);
+	  document.getElementById(previous).style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+	  pause = undefined;
+	}
 
-function increment() {
-  count=count+1;
-  var a = document.getElementById("timer");
-  a.innerText = count;
-}
-function begin(){
-    if(previous != null){
-        document.getElementById(previous).style.backgroundColor = "rgba(255, 255, 255, 0.8)";
-    }
-    id = Math.ceil(Math.random() * 9).toString();
-    var change = document.getElementById(id);
-    change.style.backgroundColor="red";
-    previous = id
-}
+	function increment() {
+	  count=count+1;
+	  var a = document.getElementById("timer");
+	  a.innerText = count;
+	}
+	function begin(){
+		if(previous != null){
+			document.getElementById(previous).style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+		}
+		id = Math.ceil(Math.random() * 9).toString();
+		var change = document.getElementById(id);
+		change.style.backgroundColor="red";
+		previous = id
+	}
 
-function startGame() {
-  previous = null;
-  process = setInterval(begin,1000);
-  document.getElementById("start").disabled=true;
-  current_score = 0;
-  document.getElementById("score").innerText = current_score;	  
-}
-function clicked(cid){
-    if(id==cid){
-        current_score++;
-        document.getElementById("score").innerText=current_score;
-    }
-}
+	function startGame() {
+	  previous = null;
+	  process = setInterval(begin,1000);
+	  document.getElementById("start").disabled=true;
+	  current_score = 0;
+	  document.getElementById("score").innerText = current_score;	  
+	}
+	function clicked(cid){
+		if(id==cid){
+			current_score++;
+			document.getElementById("score").innerText=current_score;
+		}
+	}
   </script>
 </html>
