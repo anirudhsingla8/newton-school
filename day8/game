@@ -35,9 +35,7 @@
       .grid-item{
         background-color: rgba(255, 255, 255, 0.8);
         border: 1px solid rgba(0, 0, 0, 0.8);
-        padding: 20px;
-        font-size: 30px;
-        text-align: center;
+        padding-top: 60px;
       }
     </style>
   </head>
@@ -54,15 +52,15 @@
 	</div>
     <div>
       <div class="grid-container" id="container">
-        <div class="grid-item" id="1" onclick="clicked(cid)">1</div>
-        <div class="grid-item" id="2" onclick="clicked(cid)">2</div>
-        <div class="grid-item" id="3" onclick="clicked(cid)">3</div>
-        <div class="grid-item" id="4" onclick="clicked(cid)">4</div>
-        <div class="grid-item" id="5" onclick="clicked(cid)">5</div>
-        <div class="grid-item" id="6" onclick="clicked(cid)">6</div>
-        <div class="grid-item" id="7" onclick="clicked(cid)">7</div>
-        <div class="grid-item" id="8" onclick="clicked(cid)">8</div>
-        <div class="grid-item" id="9" onclick="clicked(cid)">9</div>
+        <div class="grid-item" id="1" onclick="clicked(cid)"></div>
+        <div class="grid-item" id="2" onclick="clicked(cid)"></div>
+        <div class="grid-item" id="3" onclick="clicked(cid)"></div>
+        <div class="grid-item" id="4" onclick="clicked(cid)"></div>
+        <div class="grid-item" id="5" onclick="clicked(cid)"></div>
+        <div class="grid-item" id="6" onclick="clicked(cid)"></div>
+        <div class="grid-item" id="7" onclick="clicked(cid)"></div>
+        <div class="grid-item" id="8" onclick="clicked(cid)"></div>
+        <div class="grid-item" id="9" onclick="clicked(cid)"></div>
       </div>
     </div>
     <div class="timer" id="timer">
@@ -91,11 +89,6 @@
 	  var a = document.getElementById("timer");
       a.innerText = 0;
     }
-    function change_color(idd) {
-      var a = document.getElementById(idd);
-      a.innerText="red";
-      a.style.backgroundColor="red";
-    }
     function startTimer(){
       if(pause == undefined){
       pause = setInterval(increment,1000);
@@ -118,15 +111,14 @@
 		moleouttime= setInterval(refresh,0.5*1000);
 	}
 	function refresh(){
-		change.style.backgroundColor=rgba(255, 255, 255, 0.8);
+		change.style.background-color= "#2196F3";
 		clearInterval(moleouttime);
 	}
     function startGame() {
       process = setInterval(begin,1000);
 	  document.getElementById("start").disabled=true;
 	  current_score = 0;
-	  document.getElementById("score").innerText = current_score;
-	  
+	  document.getElementById("score").innerText = current_score;	  
     }
 	function clicked(cid){
 		if(id==cid){
