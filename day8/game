@@ -35,7 +35,9 @@
       .grid-item{
         background-color: rgba(255, 255, 255, 0.8);
         border: 1px solid rgba(0, 0, 0, 0.8);
-        padding-top: 60px;
+        padding-top: 70px;
+        font-size: 30px;
+        text-align: center;
       }
     </style>
   </head>
@@ -45,99 +47,107 @@
         Kill the Mole
       </h1>
     </div>
-	<div>
-		<p class="timer">
-			score: <span id="score"></span><span></span>        
-			high-score: <span id="high_score"></span>
-		</p>
-		
-	</div>
+    <div>
+      <p class="timer">
+        score: <span id="score"></span><span></span>
+        high-score: <span id="high_score"></span>
+      </p>
+    </div>
     <div>
       <div class="grid-container" id="container">
-        <div class="grid-item" id="1" onclick="clicked(id)">1</div>
-        <div class="grid-item" id="2" onclick="clicked(id)">2</div>
-        <div class="grid-item" id="3" onclick="clicked(id)">3</div>
-        <div class="grid-item" id="4" onclick="clicked(id)">4</div>
-        <div class="grid-item" id="5" onclick="clicked(id)">5</div>
-        <div class="grid-item" id="6" onclick="clicked(id)">6</div>
-        <div class="grid-item" id="7" onclick="clicked(id)">7</div>
-        <div class="grid-item" id="8" onclick="clicked(id)">8</div>
-        <div class="grid-item" id="9" onclick="clicked(id)">9</div>
+        <div class="grid-item" id="1" onclick="clicked(id)"></div>
+        <div class="grid-item" id="2" onclick="clicked(id)"></div>
+        <div class="grid-item" id="3" onclick="clicked(id)"></div>
+        <div class="grid-item" id="4" onclick="clicked(id)"></div>
+        <div class="grid-item" id="5" onclick="clicked(id)"></div>
+        <div class="grid-item" id="6" onclick="clicked(id)"></div>
+        <div class="grid-item" id="7" onclick="clicked(id)"></div>
+        <div class="grid-item" id="8" onclick="clicked(id)"></div>
+        <div class="grid-item" id="9" onclick="clicked(id)"></div>
       </div>
     </div>
     <div class="timer" id="timer">
       Timer
     </div>
     <div class="buttons">
-      <button onclick="startTimer()">Start Timer</button>
-      <button id="start" onclick="startGame()">Start Chasing</button>
-      <button id="stop" onclick="stop_chase()">Stop Chase</button>
+      <button id="start_timer" onclick="startTimer()">Start Timer</button>
+      <button id="start_game" onclick="startGame()">Start Chasing</button>
+      <button onclick="pause_game()">Stop Chase</button>
       <button onclick="stop_timer()">Stop Timer</button>
       <button onclick="reset_counter()">Reset Timer</button>
     </div>
   </body>
   <script>
     let count = 0;
-	let pause;
-	let process;
-	let previous;
-	let high_score=0;
-	let id = 0
-	function stop_chase(){
-		document.getElementById("start").disabled=false;
-		clearInterval(process);
-		stop_timer();
-		reset_counter();
-	}
-	function reset_counter() {
-	  count=0;
-	  pause=undefined;
-	  var a = document.getElementById("timer");
-	  a.innerText = 0;
-	}
-	function startTimer(){
-	  if(pause == undefined){
-	  pause = setInterval(increment,1000);
-	  }
-	}
-	function stop_timer() {
-	  clearInterval(pause);
-	  document.getElementById(previous).style.backgroundColor = "rgba(255, 255, 255, 0.8)";
-	  pause = undefined;
-	}
+    let pause;
+    let current_score;
+    let high_score;
+    let run;
+    let id;
+    let previous;
+    function reset_counter(){
+      var a = document.getElementById("timer");
+      a.innerText = 0;
+      count=0;
+    }
 
-	function increment() {
-	  count=count+1;
-	  var a = document.getElementById("timer");
-	  a.innerText = count;
-	}
-	function begin(){
-		if(previous != null){
-			document.getElementById(previous).style.backgroundColor = "rgba(255, 255, 255, 0.8)";
-		}
-		id = Math.ceil(Math.random() * 9).toString();
-		var change = document.getElementById(id);
-		change.style.backgroundColor="red";
-		previous = id
-		if(current_score > high_score){
-            high_score=current_score;
-            document.getElementById('high_score').innerText = high_score;
-        }
-	}
+    function startTimer(){
+      if(pause == undefined){
+      pause = setInterval(increment,1000);
+      }
+    }
+    function stop_timer() {
+      clearInterval(pause);
+      pause = undefined;
+    }
+    function pause_game() {
+      stop_timer();
+      document.getElementById("start_game").disabled=false;
+      clearInterval(run);
+      document.getElementById(previous).style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+      if(current_score>high_score){
+        document.getElementById("high_score").innerText = current_score;
+      }
+    }
+    function increment() {
+      count++;
+      var a = document.getElementById("timer");
+      a.innerText = count;
+    }
+    function begin(){
+      if(previous != null){
+        document.getElementById(previous).style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+      }
+      id = Math.ceil(Math.random() * 9);
+      console.log(id);
+      document.getElementById(id).style.backgroundColor= "red";
+      previous = id;
+    }
+      function startGame() {
+        previous = null;
+        startTimer();
+        run = setInterval(begin,1000);
+        document.getElementById("start_game").disabled = true;
+        current_score=0;
+        document.getElementById("score").innerText = 0;
+    }
+    function clicked(cid){
+      if(cid==id){
+        current_score++;
+        document.getElementById("score").innerText=current_score;
+      }
+      else{
+        document.getElementById("start_game").disabled=false;
+        alert("your score is "+current_score);
+        pause_game();
+        count = 0;
+        document.getElementById("timer").innerText = count;
+        stop_timer();
+      }
+      if(current_score>high_score){
+        document.getElementById("high_score").innerText = current_score;
+      }
+    }
 
-	function startGame() {
-	  previous = null;
-	  startTimer();
-	  process = setInterval(begin,1000);
-	  document.getElementById("start").disabled=true;
-	  current_score = 0;
-	  document.getElementById("score").innerText = current_score;	  
-	}
-	function clicked(cid){
-		if(id==cid){
-			current_score++;
-			document.getElementById("score").innerText=current_score;
-		}
-	}
   </script>
 </html>
