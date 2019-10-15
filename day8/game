@@ -107,6 +107,7 @@
       document.getElementById(previous).style.backgroundColor = "rgba(255, 255, 255, 0.8)";
       if(current_score>high_score){
         document.getElementById("high_score").innerText = current_score;
+        high_score=current_score;
       }
     }
     function increment() {
