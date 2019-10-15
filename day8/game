@@ -47,8 +47,10 @@
     </div>
 	<div>
 		<p class="timer">
-			score: <span id="score"></span>
+			score: <span id="score"></span><span></span>        
+			high-score: <span id="high_score"></span>
 		</p>
+		
 	</div>
     <div>
       <div class="grid-container" id="container">
@@ -79,10 +81,13 @@
 	let pause;
 	let process;
 	let previous;
+	let high_score=0;
 	let id = 0
 	function stop_chase(){
 		document.getElementById("start").disabled=false;
 		clearInterval(process);
+		stop_timer();
+		reset_counter();
 	}
 	function reset_counter() {
 	  count=0;
@@ -114,10 +119,15 @@
 		var change = document.getElementById(id);
 		change.style.backgroundColor="red";
 		previous = id
+		if(current_score > high_score){
+            high_score=current_score;
+            document.getElementById('high_score').innerText = high_score;
+        }
 	}
 
 	function startGame() {
 	  previous = null;
+	  startTimer();
 	  process = setInterval(begin,1000);
 	  document.getElementById("start").disabled=true;
 	  current_score = 0;
