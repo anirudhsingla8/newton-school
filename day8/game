@@ -81,7 +81,7 @@
     let count = 0;
     let pause;
     let current_score;
-    let high_score;
+    var high_score = 0;
     let run;
     let id;
     let previous;
@@ -138,6 +138,9 @@
       }
       else{
         document.getElementById("start_game").disabled=false;
+        if(current_score>high_score){
+          document.getElementById("high_score").innerText = current_score;
+        }
         alert("your score is "+current_score);
         pause_game();
         count = 0;
@@ -146,8 +149,8 @@
       }
       if(current_score>high_score){
         document.getElementById("high_score").innerText = current_score;
+        high_score = current_score;
       }
     }
-
   </script>
 </html>
