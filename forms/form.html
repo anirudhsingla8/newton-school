@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="form.js"></script>
+        <link rel="stylesheet" type="text/css" href="form.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body style="background-color: #617a57">
+        <div class="container-div">
+            <div class="heading">
+                <h1>
+                    Membership Form
+                </h1>
+            </div>
+            <form name="signup-form" action="success.html" onsubmit="return validate();">
+
+                <div class="input-box">
+                    <input placeholder="First Name" name="firstname" type="text" style="width: 200px;">
+                    <div id="errorFirstName" class="error"></div>
+                </div>
+
+                <div class="input-box">
+                    <input placeholder="Last Name" name="lastname" type="text" style="width: 200px;">
+                    <div id="errorLastName" class="error"></div>
+                </div>
+
+                <div class="input-box">
+                    <input placeholder="UserName" name="username" type="text" style="width: 200px;">
+                    <div id="errorUserName" class="error"></div>
+                </div>
+
+                <div class="input-box">
+                    <input placeholder="E-Mail" name="email" type="email" style="width: 200px;">
+                    <div id="errorEmail" class="error"> </div>
+                </div>
+
+                <div class="input-box">
+                    <input placeholder="Password" name="password" type="password" style="width: 200px;">
+                    <div id="errorPassword" class="error"></div>
+                </div>
+
+                <div class="input-box">
+                    <input placeholder="Phone Number" name="number" type="number" style="width: 200px;">
+                    <div id="errorNumber" class="error"></div>
+                </div>
+
+                <div class="input-box">
+                    <input id="male" type="radio" name="gender" value="male"> Male
+                    <input id="female" type="radio" name="gender" value="female"> Female
+                    <input id="other" type="radio" name="gender" value="other"> Other
+                    <div class="error" id="errorRadio"></div>
+                </div>
+
+                <div class="input-box">
+                    <input placeholder="Age" name="age" type="number" style="width: 200px;">
+                    <div id="errorAge" class="error"></div>
+                </div>
+
+                <div class="input-box">
+                    <select id="country" name="country" style="width: 200px;">
+                        <option value="">--Select Country--</option>
+                        <option value="1">India</option>
+                        <option value="2">China</option>
+                        <option value="3">America</option>
+                        <option value="4">Japan</option>
+                    </select>
+                    <div class="error" id="errorCountry"></div>
+                </div>
+
+                <div class="input-box" style="color: white">
+                    <input id="checkbox" name="check" type="checkbox" style="color: white"> I agree to the terms and conditions. All the details provided above are correct.
+                    <div class="error" id="errorCheck"></div>
+                </div>
+
+                <div style="text-align: center;margin-top: 10px;">
+                    <input id="submit" type="submit" value="Sign Up">
+                </div>
+
+            </form>
+        </div>
+
+    </body>
+</html>
