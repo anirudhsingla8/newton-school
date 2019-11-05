@@ -26,16 +26,17 @@
             text-align: center;
             width: 500px;
             margin: auto;
-            margin-top: 60px;
+            margin-top: 20px;
             grid-template-columns: auto auto auto;
             background-color: #2196F3;
             padding: 10px;
             border: 1px solid black;
         }
         .grid-item{
+            height: 40px;
             background-color: rgba(255, 255, 255, 0.8);
             border: 1px solid rgba(0, 0, 0, 0.8);
-            padding-top: 70px;
+            padding: 30px;
             font-size: 30px;
             text-align: center;
         }
@@ -134,10 +135,16 @@
         document.getElementById("second-name").innerText = person2;
     }
     function clicked(cid){
-        if(this.getAttribute("checked")!=true){
-            this.setAttribute("checked","true")
-            this.innerHTML='x';
+        let a = document.getElementById(cid);
+        if(a.getAttribute("checked")!='true' && flag===0){
+            a.setAttribute("checked","true")
+            a.innerHTML='X';
             flag=1
+        }
+        else if (a.getAttribute("checked")!='true' && flag===1){
+            a.setAttribute("checked","true")
+            a.innerHTML='O';
+            flag=0
         }
     }
 </script>
