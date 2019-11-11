@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title> game </title>
+    <link rel="stylesheet" type="text/css" href="tic.css">
+</head>
+<body>
+<div>
+    <h1>
+        Tic Tac Toe
+    </h1>
+</div>
+<div>
+    <p class="timer">
+        first-Player: <span id="first-name"></span><span></span>
+        Second-Player: <span id="second-name"></span>
+    </p>
+</div>
+<div>
+    <div class="grid-container" id="container">
+        <div class="grid-item" id="1" checked="false" onclick="clicked(id)"></div>
+        <div class="grid-item" id="2" checked="false" onclick="clicked(id)"></div>
+        <div class="grid-item" id="3" checked="false" onclick="clicked(id)"></div>
+        <div class="grid-item" id="4" checked="false" onclick="clicked(id)"></div>
+        <div class="grid-item" id="5" checked="false" onclick="clicked(id)"></div>
+        <div class="grid-item" id="6" checked="false" onclick="clicked(id)"></div>
+        <div class="grid-item" id="7" checked="false" onclick="clicked(id)"></div>
+        <div class="grid-item" id="8" checked="false" onclick="clicked(id)"></div>
+        <div class="grid-item" id="9" checked="false" onclick="clicked(id)"></div>
+    </div>
+</div>
+<div class="timer" id="timer">
+    Timer
+</div>
+<div class="buttons">
+    <button id="start_timer" onclick="startTimer()">Start Timer</button>
+    <button id="start_game" onclick="startGame()">Start Game</button>
+    <button onclick="pause_game()">Stop Game</button>
+    <button onclick="stop_timer()">Stop Timer</button>
+    <button onclick="reset_counter()">Reset Timer</button>
+</div>
+</body>
+<script src="tic.js"></script>
+</html>
