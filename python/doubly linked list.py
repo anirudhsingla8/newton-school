@@ -51,7 +51,6 @@ class LinkedList:
             current = current.next
             count += 1
 
-
 List = LinkedList()
 List.push(1)
 List.push(2)
@@ -59,6 +58,8 @@ List.push(3)
 List.push(4)
 List.push(5)
 
-
 List.delete_nth_node(2)
+List.print_list()
+List.push(5)
+List.push(5)
 List.print_list()

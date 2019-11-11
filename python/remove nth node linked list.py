@@ -24,13 +24,16 @@ class LinkedList:
         previous = None
         current = self.head
         while current:
+
             if index == 0:
                 self.head = current.next
                 current = None
                 break
+
             if count == index:
                 previous.next = current.next
                 current.next = None
+
             count += 1
             previous = current
             current = current.next
@@ -44,4 +47,7 @@ List.push(4)
 List.push(5)
 #List.print_list()
 print("Element at index 3 is :", List.remove_nth(0))
+List.print_list()
+List.push(5)
+List.push(5)
 List.print_list()
