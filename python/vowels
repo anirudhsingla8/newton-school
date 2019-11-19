@@ -9,7 +9,7 @@ def max_string_vowel(s):
     dict={}
     ans=n
     cv=0
-    while start<n:
+    while start<n and end<n:
         while len(dict)!=5:
             if is_vowel(s[start]):
                 if s[start] not in dict:
@@ -24,15 +24,8 @@ def max_string_vowel(s):
                 dict[s[end]]-=1
             if dict[s[end]] == 0:
                 del dict[s[end]]
-            end+=1
+        end+=1
+    print(ans)
 
-
-
-
-
-
-
-
-
-s='afefifofudddaeio'
+s='aeioghfhuaeiou'
 max_string_vowel(s)
