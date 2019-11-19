@@ -16,12 +16,17 @@ def max_string_vowel(s):
                     dict[s[start]]=1
                 else:
                     dict[s[start]] += 1
-        if len(dict) == 5:
-            cv+=1
-            ans=min((start-end+1),ans)
-        else:
-                
+            start+=1
             
+        ans=min(ans,start-end+1)
+        if s[end] in dict:
+            dict[s[end]]-=1
+        if dict[s[end]] == 0:
+            del dict[s[end]]    
+        end+=1
+
+
+
 
 
 
