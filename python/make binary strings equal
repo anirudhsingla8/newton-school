@@ -1,0 +1,21 @@
+def substring(str1,str2):
+    str1=list(str1)
+    str2=list(str2)
+    n=len(str1)
+    ans=0
+    for i in range(0,n-1):
+        if str1[i]!=str2[i] and str1[i]!=str1[i+1] and str1[i+1]!=str2[i+1]:
+            ans+=1
+            str1[i]=str2[i]
+            str1[i+1]=str2[i+1]
+            
+    for i in range(0,n):
+        if str1[i]!=str2[i]:
+            ans+=1
+    print(ans)        
+        
+
+str1='01010101'
+str2='10101010'    
+substring(str1,str2)    
+            
