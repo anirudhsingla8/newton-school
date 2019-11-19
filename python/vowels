@@ -1,0 +1,32 @@
+def is_vowel(x):
+    if x == 'a' or x == 'e' or x == 'i' or x == 'o' or x == 'u':
+        return True
+    return False
+def max_string_vowel(s):
+    n = len(s)
+    start=0
+    end=0
+    dict={}
+    ans=n
+    cv=0
+    while start<n:
+        while len(dict)!=5:
+            if is_vowel(s[start]):
+                if s[start] not in dict:
+                    dict[s[start]]=1
+                else:
+                    dict[s[start]] += 1
+        if len(dict) == 5:
+            cv+=1
+            ans=min((start-end+1),ans)
+        else:
+                
+            
+
+
+
+
+
+
+s='afefifofudddaeio'
+max_string_vowel(s)
