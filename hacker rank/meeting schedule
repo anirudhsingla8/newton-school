@@ -1,0 +1,19 @@
+def 
+
+
+
+no_test_case,minimum_duration = [int(x) for x in input().split()]
+start_time=[]
+end_time=[]
+start_time.append(0000)
+end_time.append(0000)
+for i in range(0,no_test_case):
+    a,b = [int(x) for x in input().split()]
+    start_time.append(a)
+    end_time.append(b)
+start_time.append(2400)
+end_time.append(0000)
+start_time=sorted(start_time)
+end_time=sorted(end_time)
+
+
