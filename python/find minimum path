@@ -1,0 +1,46 @@
+def is_valid(x, y):
+    if (0 <= x < 2) and (0 <= y < 3):
+        return True
+    return False
+
+
+def minimum_path(r, c, arr):
+    q = []
+    ans = [[-1 for i in range(c)] for j in range(r)]
+    arr_x = [-1, 1, 0, 0]
+    arr_y = [0, 0, -1, 1]
+    ans[0][0] = 0
+    start_x = 0
+    start_y = 0
+    q.append([start_x, start_y, ans[start_x][start_y], arr[start_x][start_y]])
+    while len(q):
+        element = q[0][3]
+        a = q[0][0]
+        b = q[0][1]
+        for i in range(0, 4):
+            if is_valid(a + arr_x[i], b + arr_y[i]):
+                if arr[a + arr_x[i]][b + arr_y[i]] == element and ans[a + arr_x[i]][b + arr_y[i]] == -1:
+                    ans[a + arr_x[i]][b + arr_y[i]] = ans[a][b]
+                    q.append(
+                        [a + arr_x[i], b + arr_y[i], ans[a + arr_x[i]][b + arr_y[i]], arr[a + arr_x[i]][b + arr_y[i]]])
+                elif arr[a + arr_x[i]][b + arr_y[i]] == element and ans[a + arr_x[i]][b + arr_y[i]] != -1:
+                    ans[a + arr_x[i]][b + arr_y[i]] = min(ans[a][b], ans[a + arr_x[i]][b + arr_y[i]])
+                    q.append(
+                        [a + arr_x[i], b + arr_y[i], ans[a + arr_x[i]][b + arr_y[i]], arr[a + arr_x[i]][b + arr_y[i]]])
+                elif arr[a + arr_x[i]][b + arr_y[i]] != element and ans[a + arr_x[i]][b + arr_y[i]] == -1:
+                    ans[a + arr_x[i]][b + arr_y[i]] = ans[a][b] + 1
+                    q.append(
+                        [a + arr_x[i], b + arr_y[i], ans[a + arr_x[i]][b + arr_y[i]], arr[a + arr_x[i]][b + arr_y[i]]])
+                elif arr[a + arr_x[i]][b + arr_y[i]] != element and ans[a + arr_x[i]][b + arr_y[i]] != -1:
+                    ans[a + arr_x[i]][b + arr_y[i]] = min(ans[a][b] + 1, ans[a + arr_x[i]][b + arr_y[i]])
+                    q.append(
+                        [a + arr_x[i], b + arr_y[i], ans[a + arr_x[i]][b + arr_y[i]], arr[a + arr_x[i]][b + arr_y[i]]])
+        q.pop(0)
+
+    return ans
+
+
+r, c = 2, 3
+arr = ['abc', 'def']
+
+print(minimum_path(r, c, arr))
